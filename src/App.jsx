@@ -1,18 +1,22 @@
-import Sidebar from "./components/Sidebar";
-import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
+import MyFiles from "./pages/MyFiles";
+import Shared from "./pages/Shared";
+import Trash from "./pages/Trash";
+import SidebarLayout from "./layouts/SidebarLayout";
 
 function App() {
   return (
-    <div className="flex min-h-screen bg-gray-100 text-gray-900">
-      <Sidebar />
-      <div className="flex flex-col flex-1">
-        <Navbar />
-        <main className="p-6">
-          <Dashboard />
-        </main>
-      </div>
-    </div>
+    <Router>
+      <SidebarLayout>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/my-files" element={<MyFiles />} />
+          <Route path="/shared" element={<Shared />} />
+          <Route path="/trash" element={<Trash />} />
+        </Routes>
+      </SidebarLayout>
+    </Router>
   );
 }
 
